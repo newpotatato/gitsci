@@ -1,0 +1,18 @@
+\section{Методы}\label{sec:methods}
+Целевая функция измеряется с аддитивным гауссовым шумом:
+\begin{equation}\label{eq:f}
+f(x) = \|x\|^2 + \xi, \quad \xi \sim \mathcal{N}(0, \sigma^2).
+\end{equation}
+Оценка градиента строится по двум измерениям в точках $x \pm c_k \Delta_k$, где компоненты
+$\Delta_k$ равны $\pm 1$ с вероятностью $1/2$:
+\begin{equation}\label{eq:grad}
+\hat g_k = \frac{f(x_k + c_k \Delta_k) - f(x_k - c_k \Delta_k)}{2 c_k} \Delta_k^{-1}.
+\end{equation}
+Шаги убывают по степенному закону $a_k = a/(k+1)^{\alpha}$, $c_k = c/(k+1)^{\gamma}$ с
+$\alpha = 0.602$ и $\gamma = 0.101$.
+Обновление с моментом имеет вид
+\begin{equation}\label{eq:momentum}
+v_{k+1} = \beta v_k + \hat g_k, \quad x_{k+1} = x_k - a_k v_{k+1}.
+\end{equation}
+При $\beta = 0$ получается классический SPSA.
+Реализация формул (\ref{eq:f})--(\ref{eq:momentum}) находится в файле \texttt{src/model.py}.

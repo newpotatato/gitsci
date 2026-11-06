@@ -1,0 +1,9 @@
+__pycache__/
+*.egg-info/
+.gitsci-cache/
+.pytest_cache/
+.ruff_cache/
+bench/corpus/
+bench/corpus_holdout/
+bench/work*/
+bench/tools/

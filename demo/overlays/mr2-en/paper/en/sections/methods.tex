@@ -1,0 +1,18 @@
+\section{Methods}\label{sec:methods}
+The objective is measured with additive Gaussian noise:
+\begin{equation}\label{eq:f}
+f(x) = \|x\|^2 + \xi, \quad \xi \sim \mathcal{N}(0, \sigma^2).
+\end{equation}
+The gradient estimate uses two measurements at $x \pm c_k \Delta_k$, where the components of
+$\Delta_k$ are $\pm 1$ with probability $1/2$:
+\begin{equation}\label{eq:grad}
+\hat g_k = \frac{f(x_k + c_k \Delta_k) - f(x_k - c_k \Delta_k)}{2 c_k} \Delta_k^{-1}.
+\end{equation}
+The gains decay as $a_k = a/(k+1)^{\alpha}$ and $c_k = c/(k+1)^{\gamma}$ with
+$\alpha = 0.602$ and $\gamma = 0.101$.
+The momentum update reads
+\begin{equation}\label{eq:momentum}
+v_{k+1} = \beta v_k + \hat g_k, \quad x_{k+1} = x_k - a_k v_{k+1}.
+\end{equation}
+Setting $\beta = 0$ recovers classical SPSA.
+Equations (\ref{eq:f})--(\ref{eq:momentum}) are implemented in \texttt{src/model.py}.

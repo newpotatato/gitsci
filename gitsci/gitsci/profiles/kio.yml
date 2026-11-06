@@ -1,0 +1,62 @@
+# Профиль журнала «Компьютерные инструменты в образовании» (требования к рукописям, октябрь 2026).
+# Заявления набираются макросами шаблона, а не заголовками, поэтому их наличие здесь не проверяется.
+name: kio
+description: Компьютерные инструменты в образовании (шаблон kioj6)
+
+documentclass: [kioj6]
+required_packages: []
+forbidden_packages: []
+
+title_max_words: 15
+abstract:
+  required: true
+  min_words: 150
+  max_words: 250
+  no_citations: true
+keywords:
+  command: keywordsru            # макрос шаблона вместо \keywords
+  min: 3
+  max: 7
+  comma_separated: true
+
+sections:
+  ordered: true
+  required:
+    - [Введение, Introduction]
+    - [Методы, Methods, Модель, Model]
+    - [Результаты, Results]
+    - [Обсуждение, Discussion]
+    - [Заключение, Conclusion]
+
+equations:
+  number_only_referenced: true
+
+pages:
+  min: 8
+  max: 15
+
+figures:
+  dir: images
+  allowed_ext: [pdf, eps, png]
+  require_caption: true
+  require_label: true
+  require_reference: true
+  min_raster_width_px: 1500
+
+references:
+  require_doi: true
+  title_match_threshold: 0.85
+  order: citation
+  min_count: 10
+
+style:
+  semicolon: off
+  triple_dash: off
+  paired_dash: off
+  contrast: off
+  water: off
+  fragmented_equation: error
+  tabs: warning
+
+authors:
+  check: false

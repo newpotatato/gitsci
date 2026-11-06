@@ -1,0 +1,4 @@
+# Все проверки берутся из общего шаблона лаборатории
+include:
+  - project: lab/ci-templates
+    file: paper.gitlab-ci.yml

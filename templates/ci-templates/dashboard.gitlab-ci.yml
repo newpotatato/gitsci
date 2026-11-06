@@ -1,0 +1,13 @@
+# Сводная таблица для руководителей: README проекта lab/dashboard + HTML-артефакт.
+# Запускается по расписанию (каждый час) и кнопкой Run pipeline.
+dashboard:
+  image: gitsci:latest
+  variables:
+    GITSCI_GITLAB_URL: http://gitlab:8929
+  rules:
+    - if: $CI_PIPELINE_SOURCE =~ /^(schedule|web|api|push)$/
+  script:
+    - gitsci dashboard --group lab --commit-to "$CI_PROJECT_PATH" --out public
+  artifacts:
+    expose_as: "Dashboard"
+    paths: [public/index.html, public/dashboard.md]

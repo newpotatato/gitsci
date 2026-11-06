@@ -1,0 +1,9 @@
+\section{Introduction}\label{sec:intro}
+Simultaneous perturbation stochastic approximation (SPSA) estimates the gradient from two measurements
+of the objective regardless of the problem dimension \cite{spall1992}.
+The method is therefore used when the gradient is unavailable and measurements are noisy.
+The convergence rate of SPSA depends on the gains $a_k$ and $c_k$, and under strong noise the iterates
+oscillate around the optimum.
+We study adding momentum to the gradient estimate.
+We show that momentum $\beta = 0.6$ reduces the final error on a noisy ten-dimensional quadratic
+function with the same number of measurements.

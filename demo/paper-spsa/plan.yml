@@ -1,0 +1,51 @@
+# Принудительный план статьи: пишем порционно, по разделам.
+# Статусы: planned → draft_ru → review_ru → approved_ru → draft_en → done
+# EN-текст раздела можно писать только после approved_ru.
+# approved_ru ставится через MR с меткой ~ru-approved, которую ставит supervisor.
+paper: "Adaptive SPSA with momentum for noisy black-box optimization"
+journal_profile: lab
+supervisor: smirnova
+milestone:
+  title: "Статья: Adaptive SPSA"
+  due: 2026-12-20
+sections:
+  - id: intro
+    title: Introduction
+    owner: ivanov
+    ru: paper/ru/sections/intro.tex
+    en: paper/en/sections/intro.tex
+    due_ru: 2026-10-12
+    due_en: 2026-10-22
+    status: planned
+  - id: methods
+    title: Methods
+    owner: ivanov
+    ru: paper/ru/sections/methods.tex
+    en: paper/en/sections/methods.tex
+    due_ru: 2026-10-14
+    due_en: 2026-10-24
+    status: planned
+  - id: results
+    title: Results
+    owner: petrova
+    ru: paper/ru/sections/results.tex
+    en: paper/en/sections/results.tex
+    due_ru: 2026-11-05
+    due_en: 2026-11-20
+    status: planned
+  - id: discussion
+    title: Discussion
+    owner: petrova
+    ru: paper/ru/sections/discussion.tex
+    en: paper/en/sections/discussion.tex
+    due_ru: 2026-11-15
+    due_en: 2026-12-01
+    status: planned
+  - id: conclusion
+    title: Conclusion
+    owner: ivanov
+    ru: paper/ru/sections/conclusion.tex
+    en: paper/en/sections/conclusion.tex
+    due_ru: 2026-11-25
+    due_en: 2026-12-08
+    status: planned

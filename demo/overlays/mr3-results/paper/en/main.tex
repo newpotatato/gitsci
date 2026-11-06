@@ -1,0 +1,47 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{authblk}
+\usepackage{hyperref}
+\graphicspath{{../../figures/}}
+\newcommand{\keywords}[1]{\par\noindent\textbf{Keywords:} #1}
+
+\title{Adaptive SPSA with momentum for noisy black-box optimization}
+\author[1]{Ivan Ivanov}
+\author[1]{Mariya Petrova}
+\author[1]{Elena Smirnova}
+\affil[1]{Stochastic Optimization Lab, Example University}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We study simultaneous perturbation stochastic approximation (SPSA) with momentum for optimization under measurement noise. On a ten-dimensional noisy quadratic function, momentum $\beta = 0.6$ reduces the final squared error compared to classical SPSA at an equal measurement budget.
+\end{abstract}
+\keywords{stochastic approximation, SPSA, momentum, noisy optimization}
+
+\input{sections/intro}
+\input{sections/methods}
+\input{sections/results}
+\input{sections/discussion}
+\input{sections/conclusion}
+
+\section*{Data availability}
+Code and data are available in the project repository.
+
+\section*{Funding}
+Not applicable.
+
+\section*{Competing interests}
+The authors declare no competing interests.
+
+\section*{Author contributions}
+All authors contributed equally.
+
+\section*{Use of generative AI}
+Generative AI was not used to write this text.
+
+\bibliographystyle{unsrt}
+\bibliography{../references}
+\end{document}

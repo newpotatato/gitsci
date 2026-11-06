@@ -1,0 +1,119 @@
+﻿id;Статья (arXiv);Файл:строка;Замечание gitsci;Фрагмент исходника;Верно? (да/нет);Комментарий
+1301.3781:FMT_EQ_UNREFERENCED:133;1301.3781;corpus_holdout/1301.3781/efficient-v22.tex:133;Формула (2) пронумерована, но на неё нет ссылки;"distribution over all the words in the vocabulary, resulting in an output layer with dimensionality $V$. Thus, the computational complexity per each training example is
+\begin{equation}
+Q = N \times D + N \times D \times H + H \times V,
+\end{equation}
+where the dominating term is $H \times V$. However, several practical solutions were proposed for avoiding it; either using hierarchical versions of the softmax~\cite{Morin, Mnih, ASRU}, or avoiding
+normalized models completely by using models that are not normalized during training~\cite{Collobert1, Huang}. With binary tree representations of the vocabulary, the number of output units that need to be evaluated
+can go down to around $log_{2}(V)$. Thus, most of the complexity is caused by the term $N \times D \times H$.
+";;
+1503.02531:FMT_EQ_UNREFERENCED:41;1503.02531;corpus_holdout/1503.02531/distillation11.tex:41;Формула (2) пронумерована, но на неё нет ссылки;"this gradient is given by:
+\begin{equation}
+\frac{\partial C}{\partial z_i} = \frac{1}{T}\left(q_i - p_i\right) = \frac{1}{T}\left(\frac{e^{z_i/T}}{\sum_j e^{z_j/T}} -\frac{e^{v_i/T}}{\sum_j e^{v_j/T}}\right)
+\label{deriv} 
+\end{equation}
+
+If the temperature is high compared with the magnitude of the logits, we can approximate:
+\begin{equation}";;
+1411.4028:FMT_EQ_UNREFERENCED:271;1411.4028;corpus_holdout/1411.4028/QuantAlgor.tex:271;Формула (30) пронумерована, но на неё нет ссылки;"If the subgraphs $g(j,k)$ and $g(j^\prime,k^\prime)$ do not involve any common qubits, the summand in \eqref{FarhiEq29} will be 0. The subgraphs $g(j,k)$ and $g(j^\prime,k^\prime)$ will have no common qubits as long as there is no path in the instance graph  from $\brake{jk}$ to $\brake{j^\prime k^\prime}$ of length $2p + 1$ or shorter. From \eqref{FarhiEq26} with $p$ replaced by $2p+1$ we see that for each $\brake{jk}$ there are at most
+\begin{equation}
+ 2 \left[ \frac{(v-1)^{2p+2} -1}{(v-1) -1}\right]
+\label{FarhiEq30}
+\end{equation}
+edges $\brake{j^\prime k^\prime}$ which could contribute to the sum in \eqref{FarhiEq29} (or $4p+4$ if $v=2$) and therefore
+\begin{equation}
+\bra{\boldsymbol{\gamma}, \boldsymbol{\beta}} C^2\ket{\boldsymbol{\gamma}, \boldsymbol{\beta}} - \bra{\boldsymbol{\gamma}, \boldsymbol{\beta}} C \ket{\boldsymbol{\gamma}, \boldsymbol{\beta}}^2 \leqslant 2 \left[ \frac{(v-1)^{2p+2} -1}{(v-1) -1}\right] \cdot m";;
+1411.4028:FMT_EQ_UNREFERENCED:407;1411.4028;corpus_holdout/1411.4028/QuantAlgor.tex:407;Формула (49) пронумерована, но на неё нет ссылки;"We introduced a quantum algorithm for approximate combinatorial optimization that depends on an integer parameter $p$. The input is an $n$ bit instance with an objective function $C$ that is the sum of $m$ local terms.  The goal is to find a string $z$ for which $C(z)$ is close to $C$'s global maximum.  In the basic algorithm, each call to the quantum computer uses a set of $2p$ angles $(\boldsymbol{\gamma}, \boldsymbol{\beta})$ and produces the state 
+\begin{equation}
+\ket{\boldsymbol{\gamma}, \boldsymbol{\beta}} = U (B, \beta_p) \, U (C, \gamma_p) \cdots U (B, \beta_1) \, U (C, \gamma_1)\, \ket{s} .
+\label{FarhiEq32}
+\end{equation}
+This is followed by a measurement in the computational basis yielding a string $z$ with an associated value $C(z)$.  Repeated calls to the quantum computer will yield a good estimate of 
+\begin{equation}
+F_p (\boldsymbol{\gamma}, \boldsymbol{\beta}) = \bra{\boldsymbol{\gamma}, \boldsymbol{\beta}} C  \ket{\boldsymbol{\gamma}, \boldsymbol{\beta}} .";;
+1411.4028:FMT_ABSTRACT_MATH:32;1411.4028;corpus_holdout/1411.4028/QuantAlgor.tex:32;В аннотации есть формула;"\begin{abstract}
+We introduce a quantum algorithm that produces approximate solutions for combinatorial optimization problems.  The algorithm depends on an integer $p \geq1$ and the quality of the approximation improves as $p$ is increased. The quantum circuit that implements the algorithm consists of unitary gates whose locality is at most the locality of the objective function whose optimum is sought.  The depth of the circuit grows linearly with $p$ times (at worst) the number of constraints.  If $p$ is fixed, that is, independent of the input size, the algorithm makes use of efficient classical preprocessing.  If $p$ grows with the input size a different strategy is proposed.  We study the algorithm as applied to MaxCut on regular graphs and analyze its performance on 2-regular and 3-regular graphs for fixed $p$.  For $p = 1$, on 3-regular graphs the quantum algorithm always finds a cut that is at least 0.6924 times the size of the optimal cut.  
+\end{abstract}
+
+\maketitle
+
+\section{introduction}
+";;
+1606.01540:FMT_TITLE:0;1606.01540;corpus_holdout/1606.01540/gym-whitepaper.tex:0;Нет \title;"\documentclass[11pt]{article}
+\usepackage[left=1in,right=1in,top=1in,bottom=1in]{geometry}
+\usepackage{times}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{amsmath}";;
+1411.4028:FMT_EQ_UNREFERENCED:412;1411.4028;corpus_holdout/1411.4028/QuantAlgor.tex:412;Формула (50) пронумерована, но на неё нет ссылки;"This is followed by a measurement in the computational basis yielding a string $z$ with an associated value $C(z)$.  Repeated calls to the quantum computer will yield a good estimate of 
+\begin{equation}
+F_p (\boldsymbol{\gamma}, \boldsymbol{\beta}) = \bra{\boldsymbol{\gamma}, \boldsymbol{\beta}} C  \ket{\boldsymbol{\gamma}, \boldsymbol{\beta}} .
+\label{FarhiEq33}
+\end{equation}
+Running the algorithm requires a strategy for a picking a sequence of sets of angles with the goal of making $F_p$ as big as possible. We give several possible strategies for finding a good set of angles.
+
+In section II we focused on fixed $p$ and the case where each bit is in no more than a fixed number of clauses.  In this case there is an efficient classical algorithm that determines the best set of angles which is then fed to the quantum computer.  Here the quantum computer is run with only the best set of angles. Note that the ``efficient"" classical algorithm which  evaluates \eqref{FarhiEq25} using \eqref{FarhiEq24} could require space doubly exponential in $p$.";;
+1609.02907:FMT_FIGURE_UNREFERENCED:457;1609.02907;corpus_holdout/1609.02907/main.tex:457;На рисунок fig:model-depth-a нет ссылки в тексте;"
+\begin{figure}[htbp]
+\centering
+\begin{subfigure}[b]{0.33\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{citeseer.pdf}
+    \label{fig:model-depth-a}
+\end{subfigure}%";;
+1411.4028:FMT_EQ_UNREFERENCED:123;1411.4028;corpus_holdout/1411.4028/QuantAlgor.tex:123;Формула (15) пронумерована, но на неё нет ссылки;"This operator only involves qubits $j$ and $k$ and those qubits whose distance on the graph from $j$ or $k$ is less than or equal to $p$. To see this consider $p=1$ where the previous expression is
+\begin{equation}
+U^\dagger (C, \gamma_1)\, U^\dagger (B, \beta_1) C_{\langle j k\rangle} U (B, \beta_1) \, U (C, \gamma_1) .
+\label{FarhiEq15}
+\end{equation}
+The factors in the operator $U (B, \beta_1)$ which do not involve qubits $j$ or $k$ commute through $C_{\langle j k \rangle}$ and we get
+\begin{equation}
+U^\dagger (C, \gamma_1)\, e^{i \beta_1( \sigma^x_j + \sigma^x_k)}C_{\langle j k\rangle} e^{-i \beta_1 (\sigma^x_j + \sigma^x_k)}\, U (C, \gamma_1) .";;
+1503.02531:FMT_EQ_UNREFERENCED:5;1503.02531;corpus_holdout/1503.02531/distillation11.tex:5;Формула (1) пронумерована, но на неё нет ссылки;"$z_i$, computed for each class into a probability, $q_i$, by comparing $z_i$ with the other logits.
+\begin{equation}
+q_i = \frac{exp(z_i/T)}{\sum_j exp(z_j/T)}
+\end{equation}
+where $T$ is a temperature that is normally set to $1$.  Using a higher value for $T$ produces a softer probability
+distribution over classes.
+
+In the simplest form of distillation, knowledge is transferred to the distilled model by training it on a transfer set";;
+1609.02907:FMT_FIGURE_UNREFERENCED:397;1609.02907;corpus_holdout/1609.02907/main.tex:397;На рисунок fig:semi-emb-e нет ссылки в тексте;"
+\begin{figure}[htbp]
+\centering
+\begin{subfigure}[b]{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth, trim={0 1.5cm 0 0}, clip]{anim_lines-25.png}
+    \caption{Iteration 25}
+    \label{fig:semi-emb-a}";;
+1609.02907:FMT_EQ_UNREFERENCED:80;1609.02907;corpus_holdout/1609.02907/main.tex:80;Формула (4) пронумерована, но на неё нет ссылки;"where $U$ is the matrix of eigenvectors of the normalized graph Laplacian $L = I_N - D^{-\frac{1}{2}}AD^{-\frac{1}{2}} = U\Lambda U^\top$, with a diagonal matrix of its eigenvalues $\Lambda$ and $U^\top x$ being the graph Fourier transform of $x$. We can understand $g_{\theta}$ as a function of the eigenvalues of $L$, \ie $g_{\theta}(\Lambda)$. Evaluating \eq \ref{eq:fourier-conv} is computationally expensive, as multiplication with the eigenvector matrix $U$ is $\mathcal{O}(N^2)$. Furthermore, computing the eigendecomposition of $L$ in the first place might be prohibitively expensive for large graphs. To circumvent this problem, it was suggested in \cite{hammond2011wavelets} that $g_{\theta}(\Lambda)$ can be well-approximated by a truncated expansion in terms of Chebyshev polynomials $T_k(x)$ up to $K^{\text{th}}$ order:
+\begin{equation}
+  g_{\theta'}(\Lambda) \approx \sum_{k=0}^{K} \theta_k ' T_k(\tilde{\Lambda}) \, ,
+\label{eq:tchebyshew}
+\end{equation}
+with a rescaled $\tilde{\Lambda}=\frac{2}{\lambda_{\text{max}}}\Lambda-I_N$. $\lambda_{\text{max}}$ denotes the largest eigenvalue of $L$. $\theta'\in \mathbb{R}^K$ is now a vector of Chebyshev coefficients. The Chebyshev polynomials are recursively defined as $T_k(x) = 2xT_{k-1}(x) - T_{k-2}(x)$, with $T_0(x)=1$ and $T_1(x)=x$. The reader is referred to \cite{hammond2011wavelets} for an in-depth discussion of this approximation.
+
+Going back to our definition of a convolution of a signal $x$ with a filter $g_{\theta'}$, we now have:";;
+1411.4028:FMT_EQ_UNREFERENCED:53;1411.4028;corpus_holdout/1411.4028/QuantAlgor.tex:53;Формула (2) пронумерована, но на неё нет ссылки;"The quantum computer works in a $2^n$ dimensional Hilbert space with computational basis vectors $|z\rangle$, and we view \eqref{FarhiEq1} as an operator which is diagonal in the computational basis.  Define a unitary operator $U (C,\gamma)$ which depends on an angle $\gamma$,
+\begin{equation}
+U (C,\gamma) = e^{-i\gamma C} = \prod\limits^{m}_{\alpha =1}\, e^{-i\gamma C_\alpha } \;.
+\label{FarhiEq3}
+\end{equation}
+All of the terms in this product commute because they are diagonal in the computational basis and each term's locality is the locality of the clause $\alpha$.  Because $C$ has integer eigenvalues we can restrict $\gamma$ to lie between 0 and $2\pi$.  Define the operator $B$ which is the sum of all single bit $\sigma^x $ operators,
+\begin{equation}
+B = \sum\limits^n_{j=1} \sigma^x_j.";;
+1409.1556:FMT_REF_UNDEFINED:40;1409.1556;corpus_holdout/1409.1556/ilsvrc14.tex:40;Ссылка на несуществующую метку #1;"\newcommand{\tblref}[1]{Table~\ref{#1}}
+\newcommand{\sref}[1]{Sect.~\ref{#1}}
+\newcommand{\apref}[1]{Appendix~\ref{#1}}
+
+\newcommand{\note}[1]{\textbf{NOTE: #1}}
+
+\newcommand*{\etal}{et~al.\@\xspace}
+\newcommand*{\eg}{e.g.\@\xspace}";;
+1609.02907:FMT_FIGURE_UNREFERENCED:397;1609.02907;corpus_holdout/1609.02907/main.tex:397;На рисунок fig:semi-emb-b нет ссылки в тексте;"
+\begin{figure}[htbp]
+\centering
+\begin{subfigure}[b]{0.5\textwidth}
+    \centering
+    \includegraphics[width=\textwidth, trim={0 1.5cm 0 0}, clip]{anim_lines-25.png}
+    \caption{Iteration 25}
+    \label{fig:semi-emb-a}";;

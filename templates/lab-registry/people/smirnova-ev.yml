@@ -1,0 +1,23 @@
+# Руководитель лаборатории
+id: smirnova-ev
+role: supervisor
+gitlab: smirnova
+name_ru: Смирнова Елена Викторовна
+name_en: Elena Smirnova
+telegram: "@smirnova_lab"
+orcid: 0000-0002-1825-0097
+email: e.smirnova@lab.example.org
+affiliations:
+  - name_ru: Лаборатория стохастической оптимизации, Университет-Пример
+    name_en: Stochastic Optimization Lab, Example University
+    email: e.smirnova@uni.example.org
+scopus_id: "57190000001"
+rinc_id: "1234-5678"
+wos_id: "A-1234-2015"
+linkedin: https://www.linkedin.com/in/elena-smirnova-lab
+cv:
+  ru: cv/smirnova_ru.md
+  en: cv/smirnova_en.md
+bibliography:
+  - 10.1109/9.119632
+updated: 2026-10-01

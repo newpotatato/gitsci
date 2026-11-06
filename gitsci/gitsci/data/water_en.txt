@@ -1,0 +1,36 @@
+# Filler phrases (English). One per line, case-insensitive.
+it is worth noting
+it should be noted
+it is important to note
+it is important to emphasize
+needless to say
+in today's world
+in recent years
+plays a crucial role
+plays a pivotal role
+plays a key role
+plays an important role
+a wide range of
+a variety of
+in the realm of
+delve into
+delves into
+shed light on
+sheds light on
+paving the way
+pave the way
+groundbreaking
+cutting-edge
+state-of-the-art
+seamless
+seamlessly
+leverage
+leverages
+robust and efficient
+comprehensive overview
+in order to
+due to the fact that
+the fact that
+notably
+furthermore
+moreover

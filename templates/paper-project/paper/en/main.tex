@@ -1,0 +1,46 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{authblk}
+\usepackage{hyperref}
+\graphicspath{{../../figures/}}
+\newcommand{\keywords}[1]{\par\noindent\textbf{Keywords:} #1}
+
+\title{Title of the paper}
+\author[1]{Ivan Ivanov}
+\author[1]{Elena Smirnova}
+\affil[1]{Stochastic Optimization Lab, Example University}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+One paragraph: problem, method, main quantitative result, significance.
+\end{abstract}
+\keywords{keyword one, keyword two, keyword three}
+
+\input{sections/intro}
+\input{sections/methods}
+\input{sections/results}
+\input{sections/discussion}
+\input{sections/conclusion}
+
+\section*{Data availability}
+Code and data are available in the project repository.
+
+\section*{Funding}
+Not applicable.
+
+\section*{Competing interests}
+The authors declare no competing interests.
+
+\section*{Author contributions}
+All authors contributed equally.
+
+\section*{Use of generative AI}
+Generative AI was not used to write this text.
+
+\bibliographystyle{unsrt}
+\bibliography{../references}
+\end{document}

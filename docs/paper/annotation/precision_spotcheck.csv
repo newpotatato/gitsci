@@ -1,0 +1,119 @@
+﻿id;Статья (arXiv);Файл:строка;Замечание gitsci;Фрагмент исходника;Верно? (да/нет);Комментарий
+2006.11239:FMT_FIGURE_UNREFERENCED:765:55;2006.11239;corpus/2006.11239/main.tex:765;На рисунок fig:ext_cifar10_nearest_neighbors нет ссылки в тексте;"
+\begin{figure}
+  \centering
+  \begin{subfigure}[b]{\textwidth}\centering
+    \includegraphics[width=0.9\textwidth]{images/cifar10_eps-fixedlarge-mse_20_nn.jpg}
+    \caption{Pixel space nearest neighbors}
+  \end{subfigure}
+  \begin{subfigure}[b]{\textwidth}\centering";;
+1810.04805:FMT_ABSTRACT_CITE:2:52;1810.04805;corpus/1810.04805/abstract.tex:2;В аннотации есть ссылка на литературу;"%auto-ignore
+We introduce a new language representation model called {\bf \bert}, which stands for \textbf{B}idirectional \textbf{E}ncoder \textbf{R}epresentations from \textbf{T}ransformers. Unlike recent language representation models~\cite{peters-etal:2018:_deep, radford-etal:2018},  \bert is designed to pre-train deep bidirectional representations from unlabeled text by jointly conditioning on both left and right context in all layers. As a result, the pre-trained BERT model can be fine-tuned with just one additional output layer to create state-of-the-art models for a wide range of tasks, such as question answering and language inference, without substantial task-specific architecture modifications. 
+
+\bert is conceptually simple and empirically powerful. It obtains new state-of-the-art results on eleven natural language processing tasks, including pushing the GLUE score to 80.5\% (7.7\% point absolute improvement), MultiNLI accuracy to 86.7\% (4.6\% absolute improvement), SQuAD v1.1 question answering Test F1 to 93.2 (1.5 point absolute improvement) and SQuAD v2.0 Test F1 to 83.1 (5.1 point absolute improvement).
+
+";;
+1706.03762:FMT_FIGURE_LABEL:8:50;1706.03762;corpus/1706.03762/visualizations.tex:8;У рисунка нет \label;"
+\begin{figure*}
+{\includegraphics[width=\textwidth, trim=0 0 0 45, clip]{./vis/anaphora_resolution_new.pdf}}
+{\includegraphics[width=\textwidth, trim=0 0 0 37, clip]{./vis/anaphora_resolution2_new.pdf}}
+\caption{Two attention heads, also in layer 5 of 6, apparently involved in anaphora resolution. Top: Full attentions for head 5. Bottom: Isolated attentions from just the word `its' for attention heads 5 and 6. Note that the attentions are very sharp for this word.}
+\end{figure*}
+
+\begin{figure*}";;
+math_0211159:FMT_EQ_UNREFERENCED:868:77;math_0211159;corpus/math_0211159/main.tex:868;Формула пронумерована, но на неё нет ссылки;" whenever $\tau$ is bounded away from $\tau_0$ (say,
+ $\tau\le(1-c)\tau_0, c>0$), we get (using (7.6), (7.11)) \begin{equation} |\nabla l|^2+R\le\frac{Cl}{\tau},\end{equation} and for
+ $\mathcal{L}$-Jacobi fields $Y$ \begin{equation}
+ \frac{d}{d\tau}\mbox{log}|Y|^2\le\frac{1}{\tau}(Cl+1)\end{equation} \par {\bf
+ 7.3}
+ As the first application of the comparison inequalities above,
+ let us give an alternative proof of a weakened version of the no
+ local collapsing theorem 4.1. Namely, rather than assuming";;
+math_0211159:FMT_EQ_UNREFERENCED:977:80;math_0211159;corpus/math_0211159/main.tex:977;Формула пронумерована, но на неё нет ссылки;" some $y$ satisfying $d(y,\frac{1}{2})\le \frac{1}{10}.$ Now we
+ compute \begin{equation} \Box h=(\bar{L}+2n+1)(-\phi
+ ''+(d_t-\triangle d-2A)\phi
+ ')-2<\nabla\phi\nabla\bar{L}>+(\bar{L}_t-\triangle\bar{L})\phi
+ \end{equation}
+ \begin{equation} \nabla h=(\bar{L}+2n+1)\nabla\phi+\phi\nabla\bar{L}\end{equation} At
+ a minimum point of $h$ we have $\nabla h=0,$ so (8.2) becomes
+ \begin{equation} \Box h=(\bar{L}+2n+1)(-\phi ''+(d_t-\triangle d-2A)\phi";;
+1406.2661:FMT_ABSTRACT_MATH:67:3;1406.2661;corpus/1406.2661/adversarial.tex:67;В аннотации есть формула;"distribution, and a discriminative model $D$ that estimates the
+probability that a sample came from the training data rather than $G$.
+The training procedure for $G$ is to maximize the probability of $D$ making
+a mistake. This framework corresponds to a minimax two-player game. In the
+space of arbitrary functions $G$ and $D$, a unique solution exists, with $G$
+recovering the training data distribution and $D$ equal to $\frac{1}{2}$
+everywhere. In the case where $G$ and $D$ are defined by multilayer perceptrons,
+the entire system can be trained with backpropagation. There is no need for any Markov chains";;
+1603.02754:FMT_EQ_UNREFERENCED:1115:43;1603.02754;corpus/1603.02754/XGBoostArxiv.tex:1115;Формула пронумерована, но на неё нет ссылки;"\end{equation}
+\begin{equation}
+\tdr^+(y) = \tdrx{1}^+(y) + \tdrx{2}^+(y)
+\end{equation}
+\begin{equation}
+\tdw(y) =\tdwx{1}(y)+ \tdwx{2}(y)
+\end{equation}
+for all $y\in \sX$";;
+math_0211159:FMT_EQ_UNREFERENCED:451:63;math_0211159;corpus/math_0211159/main.tex:451;Формула пронумерована, но на неё нет ссылки;"$\Box^*=-\partial/\partial t -\triangle +R$ is the conjugate heat
+operator. Now a routine computation gives \begin{equation}
+d\cW/dt=\int_M{2\tau|R_{ij}+\nabla_i\nabla_j
+f-\frac{1}{2\tau}g_{ij}|^2(4\pi\tau)^{-\frac{n}{2}}e^{-f}dV}
+.\end{equation} Therefore, if we let $\mu(g_{ij},\tau)=\mbox{inf}\
+\cW(g_{ij},f,\tau)$ over smooth $f$ satisfying (3.2), and
+$\nu(g_{ij})=\mbox{inf}\  \mu(g_{ij},\tau) $ over all positive
+$\tau,$ then $\nu(g_{ij}(t))$ is nondecreasing along the Ricci";;
+1406.2661:FMT_ABSTRACT_MATH:70:6;1406.2661;corpus/1406.2661/adversarial.tex:70;В аннотации есть формула;"a mistake. This framework corresponds to a minimax two-player game. In the
+space of arbitrary functions $G$ and $D$, a unique solution exists, with $G$
+recovering the training data distribution and $D$ equal to $\frac{1}{2}$
+everywhere. In the case where $G$ and $D$ are defined by multilayer perceptrons,
+the entire system can be trained with backpropagation. There is no need for any Markov chains
+or unrolled approximate inference networks during either training or generation
+of samples. Experiments demonstrate the potential of the framework
+through qualitative and quantitative evaluation of the generated";;
+1603.02754:FMT_EQ_UNREFERENCED:1090:39;1603.02754;corpus/1603.02754/XGBoostArxiv.tex:1090;Формула пронумерована, но на неё нет ссылки;"\end{equation}
+\begin{equation}
+\tdr^+(x_i) = \tdrx{1}^+(x_i) + \tdrx{2}^+(x_i)
+\end{equation}
+\begin{equation}
+\tdw(x_i) =\tdwx{1}(x_i)+ \tdwx{2}(x_{i})
+\end{equation}
+Here we use functions defined on $S\rightarrow \Rplus$ on the left sides of equalities";;
+math_0211159:FMT_EQ_UNREFERENCED:319:58;math_0211159;corpus/math_0211159/main.tex:319;Формула пронумерована, но на неё нет ссылки;"Modifying by an appropriate diffeomorphism, we get evolution
+equations \begin{equation}   (g_{ij})_t=-2R_{ij} , f_t=-\triangle
+f + |\nabla f|^2 - R ,\end{equation} and retain (1.2) in the form
+\begin{equation} \cF_t=2\int{|R_{ij}+\nabla_i\nabla_j f|^2e^{-f}dV}
+\end{equation}  Now we compute
+$$\cF_t\ge\frac{2}{n}\int{(R+\triangle
+f)^2e^{-f}dV}\ge\frac{2}{n}(\int{(R+\triangle
+f)e^{-f}dV})^2=\frac{2}{n}\cF^2,$$ and the proposition follows.";;
+1406.2661:FMT_ABSTRACT_MATH:72:11;1406.2661;corpus/1406.2661/adversarial.tex:72;В аннотации есть формула;"recovering the training data distribution and $D$ equal to $\frac{1}{2}$
+everywhere. In the case where $G$ and $D$ are defined by multilayer perceptrons,
+the entire system can be trained with backpropagation. There is no need for any Markov chains
+or unrolled approximate inference networks during either training or generation
+of samples. Experiments demonstrate the potential of the framework
+through qualitative and quantitative evaluation of the generated
+samples. 
+\end{abstract}";;
+1406.2661:FMT_FIGURE_UNREFERENCED:599:17;1406.2661;corpus/1406.2661/adversarial.tex:599;На рисунок fig:helvetica нет ссылки в тексте;"\iffalse
+\begin{figure}[h]
+\centering
+\begin{minipage}{.5\textwidth}
+    \centering
+    \includegraphics[width=7.5cm]{failure.pdf} 
+    \caption{\small Failure case of discriminator}
+    \label{fig:failure}";;
+1406.2661:FMT_ABSTRACT_MATH:66:2;1406.2661;corpus/1406.2661/adversarial.tex:66;В аннотации есть формула;"two models: a generative model $G$ that captures the data
+distribution, and a discriminative model $D$ that estimates the
+probability that a sample came from the training data rather than $G$.
+The training procedure for $G$ is to maximize the probability of $D$ making
+a mistake. This framework corresponds to a minimax two-player game. In the
+space of arbitrary functions $G$ and $D$, a unique solution exists, with $G$
+recovering the training data distribution and $D$ equal to $\frac{1}{2}$
+everywhere. In the case where $G$ and $D$ are defined by multilayer perceptrons,";;
+1706.03762:FMT_EQ_UNREFERENCED:14:48;1706.03762;corpus/1706.03762/training.tex:14;Формула пронумерована, но на неё нет ссылки;"
+\begin{equation}
+lrate = \dmodel^{-0.5} \cdot
+  \min({step\_num}^{-0.5},
+    {step\_num} \cdot {warmup\_steps}^{-1.5})
+\end{equation}
+
+This corresponds to increasing the learning rate linearly for the first $warmup\_steps$ training steps, and decreasing it thereafter proportionally to the inverse square root of the step number.  We used $warmup\_steps=4000$.";;

@@ -1,0 +1,54 @@
+# Профиль Scientific Reports (шаблон Springer Nature sn-jnl).
+# Основано на правилах журнала для статей типа Article; перед подачей сверяйте с актуальным гайдом.
+name: scirep
+description: Scientific Reports (Springer Nature, sn-jnl)
+
+documentclass: [sn-jnl]
+required_packages: [graphicx, amsmath]
+forbidden_packages: [subfigure, epsfig]
+
+title_max_words: 20
+abstract:
+  required: true
+  max_words: 200
+  no_citations: true
+  no_math: true
+keywords:
+  min: 0
+  max: 8
+
+sections:
+  ordered: true
+  required:
+    - [Introduction]
+    - [Results]
+    - [Discussion]
+    - [Methods]
+    - [Data availability]
+
+declarations:
+  - [Competing interests]
+  - [Author contributions]
+
+figures:
+  allowed_ext: [pdf, eps, png, jpg, tif, tiff]
+  require_caption: true
+  require_label: true
+  require_reference: true
+  min_raster_width_px: 1500
+
+references:
+  require_doi: true
+  title_match_threshold: 0.85
+
+style:
+  semicolon: error
+  triple_dash: off            # одиночное тире разрешено, запрещены только пары (paired_dash)
+  paired_dash: error
+  contrast: warning
+  water: warning
+  fragmented_equation: error
+  tabs: warning
+
+authors:
+  check: true

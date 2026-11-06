@@ -1,0 +1,15 @@
+# Что уходит на GitHub при публикации (тег publish-<версия>, ставит руководитель).
+github: example-lab/adaptive-spsa          # репозиторий на GitHub (организация/имя); null — только архив-артефакт
+readme: null                # отдельный публичный README, например README.public.md
+exclude:                    # не публикуется: внутренняя кухня лаборатории
+  - plan.yml
+  - gitsci.yml
+  - publish.yml
+  - AGENTS.md
+  - .claude/*
+  - .gitlab-ci.yml
+  - paper/ru/*
+  - experiments/runs/*/code.patch
+  - experiments/runs/*/untracked/*
+  - experiments/runs/*/requirements.lock.txt
+  - "*.meta.json"

@@ -1,0 +1,27 @@
+# CI реестра участников: проверка формата, таблица, напоминания об актуализации (раз в 6 мес).
+stages: [check, publish]
+
+variables:
+  GITSCI_IMAGE: gitsci:latest
+  GITSCI_GITLAB_URL: http://gitlab:8929
+
+validate:
+  stage: check
+  image: $GITSCI_IMAGE
+  script:
+    - gitsci registry . --table public/registry --codequality reports/cq-registry.json
+  artifacts:
+    when: always
+    expose_as: "Registry table"
+    paths: [public/registry.html, public/registry.md]
+    reports:
+      codequality: reports/cq-registry.json
+
+remind:
+  stage: publish
+  image: $GITSCI_IMAGE
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "schedule" && $GITSCI_API_TOKEN
+    - if: $CI_PIPELINE_SOURCE == "web" && $GITSCI_API_TOKEN
+  script:
+    - gitsci registry . --remind --fail-on error

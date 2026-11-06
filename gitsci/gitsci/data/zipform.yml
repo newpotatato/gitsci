@@ -1,0 +1,30 @@
+# Форма архива, который студент присылает на проверку («один zip по нашей форме»).
+# Структура совпадает с шаблоном проекта lab/paper-template.
+name: lab-zip
+max_size_mb: 50            # сам архив
+max_unpacked_mb: 200       # после распаковки (защита от zip-бомб)
+max_files: 3000
+
+required:                  # пути внутри архива (допускается одна общая корневая папка)
+  - path: paper/references.bib
+  - path: plan.yml
+  - path: src/
+  - path: figures/
+  - any: [paper/ru/main.tex, paper/en/main.tex]
+    message: Нет основного файла статьи paper/ru/main.tex или paper/en/main.tex
+
+forbidden:                 # мусор и то, чего в архиве быть не должно
+  - glob: "__MACOSX/*"
+  - glob: "*.DS_Store"
+  - glob: "*.aux"
+  - glob: "*.log"
+  - glob: "*.synctex.gz"
+  - glob: "*.fdb_latexmk"
+  - glob: "*.fls"
+  - glob: "*.pyc"
+  - glob: ".git/*"
+  - glob: "*.exe"
+  - glob: "*.zip"
+    message: Архив внутри архива
+
+checks: [latex, bib, figures, plan, experiments]

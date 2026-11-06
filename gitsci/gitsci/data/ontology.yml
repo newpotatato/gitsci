@@ -1,0 +1,160 @@
+# Онтология Git for Science: роли, права, сущности и свод правил.
+# Единый источник: из него строится docs/ONTOLOGY.md (gitsci rules --md), а тест проверяет,
+# что каждое правило из кода описано здесь.
+
+roles:
+  supervisor:
+    title: Руководитель
+    gitlab: Owner группы lab
+    sees: все проекты группы, реестр участников, сводную таблицу (lab/dashboard)
+    can:
+      - ставить метку ru-approved (апрув RU-версии раздела)
+      - мёрджить в main, создавать защищённые теги publish-* (публикация на GitHub)
+      - заводить проекты, назначать студентов, менять профили формата и правила
+      - редактировать реестр участников
+  student:
+    title: Студент
+    gitlab: Developer только в своих проектах; Reporter в lab/ci-templates и lab/paper-template; Guest в lab-registry
+    sees: только проекты, куда его добавили; в реестре — только свою конфиденциальную задачу актуализации (код и чужие записи скрыты); не видит сводку и чужие проекты
+    can:
+      - пушить в ветки своего проекта и открывать MR (в main — только через MR)
+      - работать в портале (localhost:8930): календарь, свои задачи, свои проекты, сдача zip «по форме»
+      - добавлять события в свои проекты и в общий календарь lab/events
+      - обновлять свои данные через задачу «Актуализировать запись»
+    cannot:
+      - ставить ru-approved себе (CI проверяет, кто поставил метку)
+      - публиковать на GitHub
+  ci-bot:
+    title: Бот CI (групповой токен GITSCI_API_TOKEN)
+    gitlab: Maintainer группы, токен скрыт (masked)
+    can:
+      - читать реестр для сверки авторов
+      - проверять, кто поставил метку апрува
+      - создавать задачи из plan.yml, напоминания реестра, обновлять сводку
+
+entities:
+  project: Проект статьи (репозиторий из lab/paper-template)
+  paper: Статья — paper/ru и paper/en, references.bib
+  section: Раздел статьи из plan.yml (владелец, сроки RU/EN, статус)
+  task: Задача GitLab (из раздела плана или вручную), срок → календарь портала и ICS
+  event: Событие — задача с меткой «событие» (дата — срок, время — «🕒 15:00–16:00» в описании)
+  run: Снимок эксперимента (experiments/runs/<id>) — версия кода + результат
+  figure: Рисунок + .meta.json (шрифты, цвета, run_id)
+  person: Запись реестра (lab-registry/people/<id>.yml), актуализация раз в 6 месяцев
+  profile: Профиль формата журнала (lab, scirep, ...)
+  submission: Архив «по форме», присланный на проверку
+  publication: Очищенная копия проекта на GitHub
+
+section_statuses: [planned, draft_ru, review_ru, approved_ru, draft_en, done]
+
+# Каталог правил. severity — уровень по умолчанию (профиль может поменять), block — блок схемы.
+rules:
+  # Check format (профиль журнала)
+  FMT_DOCCLASS: {block: Check format, severity: error, text: Класс документа не из разрешённых профилем}
+  FMT_PACKAGE_MISSING: {block: Check format, severity: error, text: Не подключён обязательный пакет}
+  FMT_PACKAGE_FORBIDDEN: {block: Check format, severity: error, text: Подключён запрещённый пакет}
+  FMT_TITLE: {block: Check format, severity: error, text: Нет заголовка или он длиннее предела}
+  FMT_ABSTRACT: {block: Check format, severity: error, text: Нет аннотации}
+  FMT_ABSTRACT_LENGTH: {block: Check format, severity: error, text: Аннотация длиннее предела}
+  FMT_KEYWORDS: {block: Check format, severity: error, text: Нет ключевых слов или их число вне диапазона}
+  FMT_SECTION_MISSING: {block: Check format, severity: error, text: Нет обязательного раздела}
+  FMT_SECTION_ORDER: {block: Check format, severity: warning, text: Порядок разделов не как в профиле}
+  FMT_FIGURE_CAPTION: {block: Check format, severity: error, text: У рисунка нет подписи}
+  FMT_FIGURE_LABEL: {block: Check format, severity: error, text: У рисунка нет метки}
+  FMT_FIGURE_UNREFERENCED: {block: Check format, severity: warning, text: На рисунок нет ссылки в тексте}
+  FMT_FIGURE_FILE: {block: Check format, severity: error, text: Файл рисунка не найден}
+  FMT_FIGURE_FORMAT: {block: Check format, severity: error, text: Формат рисунка не разрешён}
+  FMT_FIGURE_DIR: {block: Check format, severity: warning, text: Рисунок лежит не в figures/}
+  FMT_REF_UNDEFINED: {block: Check format, severity: error, text: Ссылка на несуществующую метку}
+  FMT_CITE_UNDEFINED: {block: Check format, severity: error, text: Цитата отсутствует в .bib}
+  FMT_BIB_UNUSED: {block: Check format, severity: info, text: Запись .bib нигде не цитируется}
+  FMT_ABSTRACT_CITE: {block: Check format, severity: error, text: В аннотации есть ссылка на литературу}
+  FMT_ABSTRACT_MATH: {block: Check format, severity: warning, text: В аннотации есть формула}
+  FMT_KEYWORDS_FORMAT: {block: Check format, severity: warning, text: Ключевые слова не через запятую или с точкой в конце}
+  FMT_DECLARATION_MISSING: {block: Check format, severity: error, text: Нет обязательного заявления (финансирование, конфликт интересов, вклад авторов, ИИ)}
+  FMT_EQ_UNREFERENCED: {block: Check format, severity: warning, text: Пронумерована формула без ссылки}
+  FMT_PAGES: {block: Check format, severity: error, text: Объём статьи вне диапазона профиля}
+  FMT_CITE_ORDER: {block: Check format, severity: error, text: Список литературы не в порядке цитирования}
+  BIB_TOO_FEW: {block: Check source, severity: warning, text: Источников меньше минимума профиля}
+  BIB_NOT_RECENT: {block: Check source, severity: warning, text: Мало свежих источников}
+  BIB_SELF_CITATION: {block: Check source, severity: warning, text: Доля самоцитирования выше предела (авторы сверяются с реестром)}
+  FMT_FORBIDDEN: {block: Check format, severity: warning, text: Запрещённая профилем конструкция}
+  FMT_NO_PAPER: {block: Check format, severity: error, text: Файл статьи не найден}
+  # PROBLEMS (стиль текста)
+  STYLE_SEMICOLON: {block: PROBLEMS, severity: error, text: «;» в тексте}
+  STYLE_TRIPLE_DASH: {block: PROBLEMS, severity: off, text: Длинное тире (выключено — одиночное тире разрешено)}
+  STYLE_PAIRED_DASH: {block: PROBLEMS, severity: error, text: Два тире в одном предложении («X — вставка — Y»)}
+  STYLE_CONTRAST: {block: PROBLEMS, severity: warning, text: Избыточное противопоставление «не X, а Y»}
+  STYLE_CONTRAST_DENSITY: {block: PROBLEMS, severity: warning, text: Противопоставлений больше порога на 1000 слов}
+  STYLE_WATER: {block: PROBLEMS, severity: warning, text: Водный оборот из словаря}
+  STYLE_WATER_DENSITY: {block: PROBLEMS, severity: warning, text: Водных оборотов больше порога на 1000 слов}
+  EQ_FRAGMENTED: {block: PROBLEMS, severity: error, text: Формула разорвана по одному токену на строку}
+  EQ_BLANK_LINE: {block: PROBLEMS, severity: error, text: Пустая строка внутри формулы}
+  TEX_TABS: {block: PROBLEMS, severity: warning, text: Табуляция в .tex}
+  # Check Name/Surname (реестр)
+  AUTH_NAME_SPELLING: {block: Check Name/Surname, severity: error, text: Имя автора написано не как в реестре}
+  AUTH_NOT_IN_REGISTRY: {block: Check Name/Surname, severity: warning, text: Автора нет в реестре}
+  AUTH_EMAIL: {block: Check Name/Surname, severity: warning, text: Почта не совпадает с реестром}
+  AUTH_AFFILIATION: {block: Check Name/Surname, severity: warning, text: Аффилиация не совпадает с реестром}
+  AUTH_REGISTRY_STALE: {block: Check Name/Surname, severity: warning, text: Запись автора старше 6 месяцев}
+  AUTH_NO_REGISTRY: {block: Check Name/Surname, severity: info, text: Реестр не подключён}
+  REG_EMPTY: {block: Реестр, severity: error, text: Реестр пуст}
+  REG_FIELD_MISSING: {block: Реестр, severity: error, text: Нет обязательного поля}
+  REG_DUPLICATE_ID: {block: Реестр, severity: error, text: Повтор id}
+  REG_DUPLICATE_GITLAB: {block: Реестр, severity: error, text: Повтор логина GitLab}
+  REG_FORMAT: {block: Реестр, severity: error, text: Неверный формат поля (почта, tg, Scopus, РИНЦ, WoS, LinkedIn, ORCID, дата)}
+  REG_ORCID_CHECKSUM: {block: Реестр, severity: error, text: Неверная контрольная сумма ORCID}
+  REG_AFFILIATION: {block: Реестр, severity: error, text: Аффилиация без названия RU/EN}
+  REG_ID_MISSING: {block: Реестр, severity: warning, text: Не заполнен ORCID/Scopus/РИНЦ}
+  REG_CV_MISSING: {block: Реестр, severity: info, text: Нет CV/биографии}
+  REG_CV_FILE: {block: Реестр, severity: error, text: Файл CV не найден}
+  REG_STALE: {block: Реестр, severity: warning, text: Запись не актуализировалась больше 6 месяцев}
+  # Check source
+  BIB_NO_FILE: {block: Check source, severity: error, text: Нет .bib}
+  BIB_DUPLICATE_KEY: {block: Check source, severity: error, text: Повтор ключа}
+  BIB_FIELD_MISSING: {block: Check source, severity: warning, text: Нет обязательного поля записи}
+  BIB_DOI_MISSING: {block: Check source, severity: warning, text: Нет DOI (с подсказкой из Crossref)}
+  BIB_DOI_MALFORMED: {block: Check source, severity: error, text: Некорректный DOI}
+  BIB_DOI_NOT_FOUND: {block: Check source, severity: error, text: DOI не существует}
+  BIB_DOI_TITLE_MISMATCH: {block: Check source, severity: error, text: DOI ведёт на другую статью}
+  BIB_YEAR_MISMATCH: {block: Check source, severity: warning, text: Год не совпадает с Crossref}
+  BIB_AUTHOR_MISMATCH: {block: Check source, severity: warning, text: Первый автор не совпадает с Crossref}
+  BIB_DOI_UNCHECKED: {block: Check source, severity: info, text: DOI не проверен (нет сети)}
+  # Check Graphs
+  FIG_FONT_SMALL: {block: Check Graphs, severity: error, text: Шрифт меньше 7 pt в итоговом размере}
+  FIG_CVD: {block: Check Graphs, severity: error, text: Цвета неразличимы при дальтонизме}
+  FIG_COLORS_SIMILAR: {block: Check Graphs, severity: warning, text: Цвета серий слишком похожи}
+  FIG_LOW_RES: {block: Check Graphs, severity: warning, text: Низкое разрешение растра}
+  FIG_TOO_WIDE: {block: Check Graphs, severity: warning, text: Шире полосы журнала}
+  FIG_NO_META: {block: Check Graphs, severity: info, text: График сохранён не через gitsci.mpl}
+  FIG_NO_RUN: {block: Check Graphs, severity: warning, text: График не привязан к запуску эксперимента}
+  FIG_UNREADABLE: {block: Check Graphs, severity: error, text: Файл рисунка не читается}
+  # Snapshot for experiments
+  EXP_NO_META: {block: Snapshot, severity: error, text: Запуск без meta.json}
+  EXP_PATCH_MISSING: {block: Snapshot, severity: error, text: Грязное дерево без патча}
+  EXP_NO_RESULT: {block: Snapshot, severity: warning, text: Нет ни метрик, ни выходных файлов}
+  EXP_FAILED: {block: Snapshot, severity: info, text: Запуск завершился с ошибкой}
+  EXP_FIGURE_ORPHAN: {block: Snapshot, severity: error, text: График ссылается на несуществующий запуск}
+  # План и апрув
+  PLAN_MISSING: {block: План, severity: error, text: Нет plan.yml}
+  PLAN_EMPTY: {block: План, severity: error, text: В плане нет разделов}
+  PLAN_SUPERVISOR: {block: План, severity: error, text: Не указан руководитель}
+  PLAN_STATUS: {block: План, severity: error, text: Неизвестный статус раздела}
+  PLAN_FIELD: {block: План, severity: error, text: Не заполнено поле раздела}
+  PLAN_DATES: {block: План, severity: error, text: Срок EN раньше срока RU}
+  PLAN_FILE: {block: План, severity: error, text: Файла раздела нет}
+  PLAN_EN_BEFORE_APPROVAL: {block: План, severity: error, text: EN написан до апрува RU}
+  PLAN_APPROVAL: {block: План, severity: error, text: Апрув без approved_by/approved_mr или не от руководителя}
+  PLAN_APPROVAL_FORGED: {block: План, severity: error, text: Метку ru-approved поставил не руководитель}
+  PLAN_APPROVAL_UNVERIFIED: {block: План, severity: info, text: Апрув не сверен с GitLab}
+  PLAN_OVERDUE: {block: План, severity: warning, text: Раздел просрочен}
+  # Сдача архива
+  ZIP_BAD: {block: ZIP, severity: error, text: Не zip или повреждён}
+  ZIP_TOO_BIG: {block: ZIP, severity: error, text: Архив или распакованный объём больше предела}
+  ZIP_TOO_MANY_FILES: {block: ZIP, severity: error, text: Слишком много файлов}
+  ZIP_UNSAFE_PATH: {block: ZIP, severity: error, text: Опасный путь (.. или абсолютный)}
+  ZIP_MISSING: {block: ZIP, severity: error, text: Нет обязательного файла/папки по форме}
+  ZIP_FLAT_OVERLEAF: {block: ZIP, severity: error, text: Плоская выгрузка Overleaf вместо структуры по форме}
+  ZIP_FORBIDDEN_FILE: {block: ZIP, severity: warning, text: Мусор в архиве (.aux, __MACOSX, .git ...)}
+  # Публикация
+  PUB_SECRET: {block: Публикация, severity: error, text: В публикуемых файлах найден секрет}

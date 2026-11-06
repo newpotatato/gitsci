@@ -1,0 +1,80 @@
+# Профиль «внутренний формат лаборатории».
+# ЧЕРНОВИК: собран по схеме PROBLEMS, будет откалиброван по эталонной статье (example our).
+name: lab
+description: Внутренний формат статей лаборатории
+
+documentclass: [article, sn-jnl]
+required_packages: [amsmath, graphicx, hyperref]
+forbidden_packages: [subfigure, epsfig]
+
+title_max_words: 20
+abstract:
+  required: true
+  max_words: 250
+  no_citations: true
+  no_math: true
+keywords:
+  min: 3
+  max: 7
+  comma_separated: true
+
+sections:
+  ordered: true
+  required:
+    - [Introduction, Введение]
+    - [Methods, Materials and methods, Методы, Материалы и методы, Model, Модель]
+    - [Results, Результаты]
+    - [Discussion, Обсуждение]
+    - [Conclusion, Conclusions, Заключение, Выводы]
+    - [Data availability, Code availability, Доступность данных]
+
+# Заявления: любой уровень заголовка, в любом месте статьи
+declarations:
+  - [Funding, Acknowledgements, Финансирование, Благодарности]
+  - [Competing interests, Conflict of interest, Конфликт интересов]
+  - [Author contributions, Вклад авторов]
+  - [Use of generative AI, Declaration of generative AI, Использование генеративного ИИ]
+
+equations:
+  number_only_referenced: true   # номер только у формул, на которые ссылаются
+
+pages:
+  max: 20                        # по .log сборки PDF
+
+figures:
+  dir: figures
+  allowed_ext: [pdf, svg, eps, png]
+  require_caption: true
+  require_label: true
+  require_reference: true
+  min_raster_width_px: 1500
+
+references:
+  require_doi: true          # нет DOI → предупреждение (кроме @misc/@online)
+  title_match_threshold: 0.85
+  order: citation            # нумерация в порядке первого цитирования
+  min_count: 15
+  recent: {years: 5, min_share: 0.5}
+  self_citation_max: 0.2     # свои работы сверяются по авторам статьи и реестру
+
+forbidden:
+  - pattern: '\\\\\s*\\\\'
+    message: Двойной перенос строки «\\ \\» для отступов
+    hint: Используйте пустую строку (абзац) или \vspace в преамбуле
+  - pattern: '\\newpage|\\clearpage'
+    severity: info
+    message: Ручной разрыв страницы — уберите перед подачей
+
+style:
+  semicolon: error
+  triple_dash: off            # одиночное тире разрешено, запрещены только пары (paired_dash)
+  paired_dash: error
+  contrast: warning
+  contrast_per_1000_words: 2
+  water: warning
+  water_per_1000_words: 5
+  fragmented_equation: error
+  tabs: warning
+
+authors:
+  check: true

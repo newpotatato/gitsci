@@ -1,0 +1,22 @@
+# Стиль графиков лаборатории: палитра Okabe–Ito (различима при дальтонизме), шрифты ≥ 7 pt.
+axes.prop_cycle: cycler('color', ['0072B2', 'E69F00', '009E73', 'D55E00', 'CC79A7', '56B4E9', 'F0E442', '000000'])
+font.family: sans-serif
+font.size: 8
+axes.titlesize: 9
+axes.labelsize: 8
+xtick.labelsize: 7
+ytick.labelsize: 7
+legend.fontsize: 7
+legend.frameon: False
+lines.linewidth: 1.2
+lines.markersize: 4
+axes.spines.top: False
+axes.spines.right: False
+axes.grid: True
+grid.alpha: 0.3
+figure.figsize: 3.3, 2.25
+figure.dpi: 150
+savefig.dpi: 600
+savefig.format: pdf
+pdf.fonttype: 42
+ps.fonttype: 42

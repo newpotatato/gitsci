@@ -1,0 +1,22 @@
+id: ivanov-ii
+role: student
+gitlab: ivanov
+name_ru: Иванов Иван Игоревич
+name_en: Ivan Ivanov
+telegram: "@ivanov_ivan"
+orcid: 0000-0002-4719-3810
+email: i.ivanov@lab.example.org
+affiliations:
+  - name_ru: Лаборатория стохастической оптимизации, Университет-Пример
+    name_en: Stochastic Optimization Lab, Example University
+    email: i.ivanov@uni.example.org
+scopus_id: "57190000002"
+rinc_id: "2345-6789"
+wos_id: ""
+linkedin: ""
+cv:
+  ru: cv/ivanov_ru.md
+  en: ""
+bibliography: []
+# Запись не обновлялась больше 6 месяцев — CI напомнит об актуализации
+updated: 2026-02-15

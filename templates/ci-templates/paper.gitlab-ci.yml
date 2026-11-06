@@ -1,0 +1,115 @@
+# Общий CI для проектов статей лаборатории (Git for Science).
+# Подключение в проекте:
+#   include:
+#     - project: lab/ci-templates
+#       file: paper.gitlab-ci.yml
+
+workflow:
+  rules:
+    - if: $CI_COMMIT_TAG
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: $CI_COMMIT_BRANCH && $CI_OPEN_MERGE_REQUESTS
+      when: never
+    - if: $CI_COMMIT_BRANCH
+
+stages: [check, publish]
+
+variables:
+  GITSCI_IMAGE: gitsci:latest
+  GITSCI_GITLAB_URL: http://gitlab:8929          # адрес GitLab из сети раннера
+  GITSCI_REGISTRY_PROJECT: lab/lab-registry
+  GITSCI_REGISTRY: /tmp/lab-registry
+
+.gitsci:
+  stage: check
+  image: $GITSCI_IMAGE
+  cache:
+    key: gitsci-crossref
+    paths: [.gitsci-cache/]
+  before_script:
+    - mkdir -p reports
+    - |
+      if [ -n "$GITSCI_API_TOKEN" ]; then
+        git clone -q --depth 1 "http://oauth2:${GITSCI_API_TOKEN}@gitlab:8929/${GITSCI_REGISTRY_PROJECT}.git" "$GITSCI_REGISTRY" \
+          || echo "Реестр недоступен — авторы не будут сверены"
+      fi
+  artifacts:
+    when: always
+    expire_in: 30 days
+    reports:
+      codequality: reports/cq-$CI_JOB_NAME.json
+    paths: [reports/]
+
+# --- Check format: профиль журнала + стиль текста + авторы по реестру ------------
+latex:
+  extends: .gitsci
+  script:
+    - gitsci latex --codequality reports/cq-$CI_JOB_NAME.json --json reports/latex.json
+
+# --- Check source: DOI ↔ название через Crossref ----------------------------------
+bib:
+  extends: .gitsci
+  script:
+    - gitsci bib --codequality reports/cq-$CI_JOB_NAME.json --json reports/bib.json
+
+# --- Check Graphs -----------------------------------------------------------------
+figures:
+  extends: .gitsci
+  script:
+    - gitsci figures --codequality reports/cq-$CI_JOB_NAME.json
+
+# --- План: порционное написание, апрув RU руководителем --------------------------
+plan:
+  extends: .gitsci
+  script:
+    - gitsci plan --codequality reports/cq-$CI_JOB_NAME.json
+
+# --- Snapshot for experiments: у каждого запуска есть версия и результат ----------
+experiments:
+  extends: .gitsci
+  script:
+    - gitsci exp check --codequality reports/cq-$CI_JOB_NAME.json
+
+# --- Check Code ---------------------------------------------------------------------
+code:
+  extends: .gitsci
+  script:
+    - ruff check src --output-format=gitlab --exit-zero > reports/cq-$CI_JOB_NAME.json
+    - ruff check src
+
+# --- Задачи и сроки из plan.yml → GitLab issues (→ календарь) ----------------------
+plan-sync:
+  extends: .gitsci
+  stage: publish
+  resource_group: plan-sync          # не запускать две синхронизации одновременно
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH && $GITSCI_API_TOKEN
+  script:
+    - gitsci plan --sync
+  artifacts: {}
+
+# --- Публикация на GitHub: только по защищённому тегу publish-<версия> (создаёт руководитель) ---
+# Публикуется очищенная копия по publish.yml (без plan.yml, RU-черновиков, AGENTS.md, патчей экспериментов),
+# одним коммитом без внутренней истории. Перед отправкой — поиск секретов. Токен — GITHUB_TOKEN (protected).
+publish-github:
+  stage: publish
+  image: $GITSCI_IMAGE
+  rules:
+    - if: $CI_COMMIT_TAG =~ /^publish-/
+  script:
+    - gitsci publish --version "${CI_COMMIT_TAG#publish-}" --out public-export
+  artifacts:
+    expose_as: "Public export"
+    paths: [public-export/]
+
+# --- PDF (по кнопке; нужен образ с TeX Live) --------------------------------------
+pdf:
+  stage: publish
+  image: texlive/texlive:latest
+  rules:
+    - when: manual
+  allow_failure: true
+  script:
+    - cd paper/en && latexmk -pdf -interaction=nonstopmode main.tex
+  artifacts:
+    paths: [paper/en/main.pdf]

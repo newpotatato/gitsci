@@ -1,0 +1,24 @@
+id: petrova-ma
+role: student
+gitlab: petrova
+name_ru: Петрова Мария Алексеевна
+name_en: Maria Petrova
+telegram: "@mpetrova"
+orcid: 0000-0003-1958-4205
+email: m.petrova@lab.example.org
+affiliations:
+  - name_ru: Лаборатория стохастической оптимизации, Университет-Пример
+    name_en: Stochastic Optimization Lab, Example University
+    email: m.petrova@uni.example.org
+  - name_ru: Институт прикладной математики-Пример
+    name_en: Institute of Applied Mathematics Example
+    email: petrova@iam.example.org
+scopus_id: "57190000003"
+rinc_id: "345678"
+wos_id: "B-2345-2021"
+linkedin: https://www.linkedin.com/in/maria-petrova-math
+cv:
+  ru: cv/petrova_ru.md
+  en: cv/petrova_en.md
+bibliography: []
+updated: 2026-09-20

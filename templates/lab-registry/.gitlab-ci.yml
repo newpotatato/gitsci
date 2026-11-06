@@ -1,0 +1,3 @@
+include:
+  - project: lab/ci-templates
+    file: registry.gitlab-ci.yml

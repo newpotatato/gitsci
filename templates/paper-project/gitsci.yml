@@ -1,0 +1,9 @@
+# Настройки проверок проекта (Git for Science)
+profile: lab                     # профиль формата: lab (внутренний), scirep или путь к своему YAML
+papers:
+  - paper/en/main.tex
+  - paper/ru/main.tex
+bib: paper/references.bib
+figures: figures
+plan: plan.yml
+registry: ../lab-registry        # в CI подставляется GITSCI_REGISTRY
